@@ -1,0 +1,636 @@
+#:kivy 2.1.0
+#:import utils kivy.utils 
+#:import C kivy.utils.get_color_from_hex
+
+<LoginScreen>
+    name: "login_screen"
+    Image:
+        source:"mike2.jpg"
+        size_hint:1,1
+        background_color:1,1,1,0.3
+        pos_hint: {"center_x": 0.35, "center_y": 0.5}
+
+    # Button:
+    #     text: "Login"
+    #     size_hint: 0.3, 0.1
+    #     pos_hint: {"center_x": 0, "center_y": 0}
+    #     background_color: (0,0,0,1)
+    #     on_press: root.hoop()
+    #     color : (0,0,0)
+    #     canvas.before:
+    #         Color:
+    #             rgba: .8, .8, .8, .6
+    #         RoundedRectangle:
+    #             size: self.size
+    #             pos : self.pos
+    #             radius:[5] 
+
+    # Button:
+    #     text: "Login"
+    #     size_hint: 0.3, 0.1
+    #     pos_hint: {"center_x": 0, "center_y": 1}
+    #     background_color: (0,0,0,1)
+    #     on_press: root.loop()
+    #     color : (0,0,0)
+    #     canvas.before:
+    #         Color:
+    #             rgba: .8, .8, .8, .6
+    #         RoundedRectangle:
+    #             size: self.size
+    #             pos : self.pos
+    #             radius:[5] 
+
+    FloatLayout:
+        FloatLayout:
+            size_hint: 0.5,0.7
+            pos_hint: {"center_x": 0.7, "center_y": 0.5}
+ 
+            canvas.before:
+                Color:
+                    rgba: 0.5, 0.5, 0.5, 0.75
+                
+                RoundedRectangle:
+                    size: self.size
+                    pos : self.pos
+                    radius:[40]
+               
+            Label:
+                text: "Login"
+                font_size: 28
+                size_hint: None, None
+                size: self.texture_size
+                pos_hint: {"center_x": 0.5, "center_y": 0.85}
+                color: utils.get_color_from_hex("#000000")
+
+            TextInput:
+                id: username
+                hint_text: "Username"
+                hint_text_color: (0.1,0.1,0.1)
+                size_hint: 0.6, .1
+                padding: 12
+                pos_hint: {"center_x": 0.5, "center_y": 0.7}
+                foreground_color: utils.get_color_from_hex("#000000")
+                background_color: (1,0,0,0)
+                canvas.after:
+                    Color:
+                        rgba: (1,1,1,.1)
+                    RoundedRectangle:
+                        size: self.size
+                        pos : self.pos
+                        radius:[8]
+            TextInput:
+                canvas.after:
+                    Color:
+                        rgba: (1,1,1,.1)
+                    RoundedRectangle:
+                        size: self.size
+                        pos : self.pos
+                        radius:[8]
+                # background_radius: [20,]
+                id: password
+                hint_text: "Enter Password"
+                password: True
+                hint_text_color: (0.1,0.1,0.1)
+                padding:12
+                size_hint: 0.6, .1
+                height: 40
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                foreground_color: utils.get_color_from_hex("#000000")
+                background_color: (1,1,1,0)
+                
+            Button:
+                text: "Login"
+                size_hint: 0.3, 0.1
+                pos_hint: {"center_x": 0.5, "center_y": .275}
+                background_color: (0,0,0,0)
+                on_press: root.login(username.text,password.text)
+                color : (0,0,0)
+                canvas.before:
+                    Color:
+                        rgba: .8, .8, .8, .6
+                    RoundedRectangle:
+                        size: self.size
+                        pos : self.pos
+                        radius:[5] 
+            Button:
+                text: "Don't have an account? Sign up"
+                size_hint: 0.3, None
+                height: 40
+                pos_hint: {"center_x": 0.5, "center_y": .125}
+                on_press: root.go_to_signup()
+                background_color: (0,0,0,0)
+                color : (0,0,0)
+                # on_press: app.login(username.text, email.text, password.text)
+                # canvas.before:
+                #     Color:
+                #         rgba: .8, .8, .8, .6
+                #     RoundedRectangle:
+                #         size: self.size
+                #         pos : self.pos
+                #         radius:[5] 
+
+# -------------------------------------------------------------------------------------------------------------------
+
+<SignUpScreen>
+    name: "signup_screen"
+    Image:
+        source:"mike2.jpg"
+        size_hint:1,1
+        background_color:1,1,1,0.3
+        pos_hint: {"center_x": 0.35, "center_y": 0.5}
+
+    FloatLayout:
+        FloatLayout:
+            size_hint: 0.5,0.7
+            pos_hint: {"center_x": 0.7, "center_y": 0.5}
+ 
+            canvas.before:
+                Color:
+                    rgba: 0.5, 0.5, 0.5, 0.75
+                RoundedRectangle:
+                    size: self.size
+                    pos : self.pos
+                    radius:[40]
+                
+            Label:
+                text: "Sign up"
+                font_size: 25
+                size_hint: None, None
+                size: self.texture_size
+                color:(0,0,0,1)
+                pos_hint: {"center_x": 0.5, "center_y": 0.925}
+
+            TextInput:
+                id: username
+                hint_text: "Username"
+                size_hint: 0.6, .1
+                padding: 12
+                hint_text_color: (0.1,0.1,0.1)
+                foreground_color: utils.get_color_from_hex("#000000")
+                background_color: (1,1,1,0)
+                pos_hint: {"center_x": 0.5, "center_y": 0.825}
+                canvas.after:
+                    Color:
+                        rgba: (1,1,1,.1)
+                    RoundedRectangle:
+                        size: self.size
+                        pos : self.pos
+                        radius:[8]
+            TextInput:
+                id: gender
+                hint_text: "Gender"
+                padding: 12
+                size_hint: 0.6, .1
+                hint_text_color: (0.1,0.1,0.1)
+                foreground_color: utils.get_color_from_hex("#000000")
+                background_color: (1,1,1,0)
+                pos_hint: {"center_x": 0.5, "center_y": 0.7}
+                canvas.after:
+                    Color:
+                        rgba: (1,1,1,.1)
+                    RoundedRectangle:
+                        size: self.size
+                        pos : self.pos
+                        radius:[8]
+            TextInput:
+                id: email
+                hint_text: "Email"
+                padding:12
+                size_hint: 0.6, .1
+                height: 40
+                hint_text_color: (0.1,0.1,0.1)
+                foreground_color: utils.get_color_from_hex("#000000")
+                background_color: (1,1,1,0)
+                pos_hint: {"center_x": 0.5, "center_y": 0.575}
+                canvas.after:
+                    Color:
+                        rgba: (1,1,1,.1)
+                    RoundedRectangle:
+                        size: self.size
+                        pos : self.pos
+                        radius:[8]
+            TextInput:
+                id: password
+                hint_text: "Enter Password"
+                password: True
+                padding:12
+                size_hint: 0.6, .1
+                height: 40
+                hint_text_color: (0.1,0.1,0.1)
+                foreground_color: utils.get_color_from_hex("#000000")
+                background_color: (1,1,1,0)
+                pos_hint: {"center_x": 0.5, "center_y": 0.45}
+                canvas.after:
+                    Color:
+                        rgba: (1,1,1,.1)
+                    RoundedRectangle:
+                        size: self.size
+                        pos : self.pos
+                        radius:[8]
+            TextInput:
+                id: cpassword
+                hint_text: "Confirm Password"
+                password: True
+                size_hint: 0.6, .1
+                padding:12
+                height: 40
+                hint_text_color: (0.1,0.1,0.1)
+                foreground_color: utils.get_color_from_hex("#000000")
+                background_color: (1,1,1,0)
+                pos_hint: {"center_x": 0.5, "center_y": 0.325}
+                canvas.after:
+                    Color:
+                        rgba: (1,1,1,.1)
+                    RoundedRectangle:
+                        size: self.size
+                        pos : self.pos
+                        radius:[8]
+            Button:
+                text: "Sign up"
+                size_hint: 0.3, None
+                height: 40
+                pos_hint: {"center_x": 0.5, "center_y": .2}
+                on_press: root.insert(username.text,gender.text,email.text,password.text,cpassword.text)
+                background_color: (0,0,0,0)
+                color : (0,0,0)
+                canvas.before:
+                    Color:
+                        rgba: .8, .8, .8, .6
+                    RoundedRectangle:
+                        size: self.size
+                        pos : self.pos
+                        radius:[5] 
+
+            Button:
+                text: "Already have an account? Login"
+                size_hint: 0.3, None
+                height: 40
+                pos_hint: {"center_x": 0.5, "center_y": .095}
+                background_color: (0,0,0,0)
+                color : (0,0,0)
+                on_press: root.go_to_login()
+                # canvas.before:
+                #     Color:
+                #         rgba: .8, .8, .8, .6
+                #     RoundedRectangle:
+                #         size: self.size
+                #         pos : self.pos
+                #         radius:[5] 
+
+# ----------------------------------------------------------------------------------------------------
+
+<RecScreen>
+    name:"rec_screen"
+    
+    FloatLayout:
+        TextInput:
+            id: recording_name
+            hint_text: "Recording Name"
+            hint_text_color: (.8,.8,.8)
+            size_hint: 0.3, .069
+
+            padding: 12
+            pos_hint: {"center_x": 0.8, "center_y": 0.95}
+            foreground_color: utils.get_color_from_hex("#ffffff")
+            background_color: (1,0,0,0)
+            canvas.after:
+                Color:
+                    rgba: (.3,.3,.3,.4)
+                RoundedRectangle:
+                    size: self.size
+                    pos : self.pos
+                    radius:[8]
+
+        Button:
+            text: "Back to Dashboard"
+            size_hint: .25,.069
+            background_color:.5,.5,.5,.5
+            pos_hint: {"center_x": 0.15, "center_y": 0.95}
+            on_press: root.dashboard()
+
+        FloatLayout:
+            size_hint : .3,.2
+            pos_hint: {"center_x": 0.8, "center_y": 0.65}
+            # background_color: (1,1,1,0.1)
+            canvas.before:
+                Color:
+                    rgba: .5, .5, .5,0.2
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius:[8]
+
+            Button:
+                id: start_btn
+                text: "Start"
+                size_hint: .5, .4
+                background_color:.5,.5,.5,.5
+                pos_hint: {"center_x": 0.3, "center_y": .73}
+                on_press: root.on_start1()
+
+            Button:
+                id: stop_btn
+                text: "Stop"
+                size_hint: .5, .4
+                background_color:.5,.5,.5,.5
+                pos_hint: {"center_x": 0.3, "center_y": .27}
+                on_press: root.on_stop()
+
+            Button:
+                id: cam_btn
+                text: "Camera"
+                size_hint: .375, .85
+                background_color:.5,.5,.5,.5
+                pos_hint: {"center_x": 0.775, "center_y": .5}
+                on_press: root.camera_start()
+
+        FloatLayout:
+            size_hint : .3,.2
+            pos_hint: {"center_x": 0.8, "center_y": 0.35}
+            canvas.before:
+                Color:
+                    rgba: .5, .5, .5,0.2
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius:[8]
+
+            Button:
+                id: reset_btn
+                text: "Try again"
+                size_hint: .45, .85
+                background_color:.5,.5,.5,.5
+                pos_hint: {"center_x": 0.25, "center_y": .5}
+                on_press: root.reset()
+
+            Button:
+                id: cam_btn
+                text: "See Results"
+                size_hint: .45, .85
+                background_color:.5,.5,.5,.5
+                pos_hint: {"center_x": 0.75, "center_y": .5}
+                on_press: root.show_results()
+
+        Camera:
+            id: camera
+            resolution: (128*4, 0)
+            play: False   
+            pos_hint: {"center_x": 0.325, "center_y": 0.5}
+            size_hint: .6,.5
+
+        Image:
+            id: img
+            source:"mike2.jpg"
+            size_hint: .8,.6
+            # background_color : (.5,.5,.5,1)
+            pos_hint: {"center_x": 0.325, "center_y": 0.5}
+ 
+        Label:
+            id: min_counter
+            text: "00"
+            font_size: 30
+            pos_hint: {"center_x": 0.53, "center_y": .175}
+            color:(.5,.5,.5,1)
+
+        Label:
+            id: dot
+            text: "."
+            font_size: 30
+            pos_hint: {"center_x": 0.56, "center_y": .175}
+            color:(.5,.5,.5,1)
+ 
+        Label:
+            id: sec_counter
+            text: "00"
+            font_size: 30
+            pos_hint: {"center_x": 0.59, "center_y": .175}
+            color:(.5,.5,.5,1)
+ 
+        Widget:
+            id: separator
+            # size_hint_y: None
+            pos_hint: {"center_x": .1, "center_y": 0.9}
+            canvas:
+                Color:
+                    rgb: .5, .5, .5
+                Rectangle:
+                    pos: 0, separator.center_y
+                    size: separator.width, .5
+
+# ===========================================================================================================
+
+<ResultScreen>
+    name:"result_screen"
+    # Image:
+    #     source:"mike2.jpg"
+    #     size_hint:1,1
+    #     background_color:1,1,1,0.3
+    #     pos_hint: {"center_x": 0.45, "center_y": 0.5}
+
+    Button:
+        id: dash
+        text: "Go To DashBoard"
+        size_hint: .25, .2
+        background_color:.5,.5,.5,.5
+        pos_hint: {"center_x": 0.575, "center_y": .113}
+        on_press: root.go_to_dash()
+
+    Button:
+        id: save
+        text: "Save Recording"
+        size_hint: .25, .2
+        background_color:.5,.5,.5,.5
+        pos_hint: {"center_x": 0.85, "center_y": .113}
+        on_press: root.save()
+
+    FloatLayout:
+        size_hint: .43, .32  # set the size_hint to 50% width and 100% height
+        pos_hint: {"center_x": 0.22, "center_y": 0.172}
+        canvas.before:
+            Color:
+                rgba: (.5,.5,.5,.2)
+            RoundedRectangle:
+                pos: self.pos
+                size: self.size
+                radius:[4]
+
+        Label:
+            id: filler
+            text: "Filler Words"
+            font_size: 35
+            pos_hint: {"center_x": 0.5, "center_y": .5}
+            # color:(.5,.5,.5,1)
+        Label:
+            id: l_filler
+            text: "Filler Words"
+            font_size: 15
+            pos_hint: {"center_x": 0.5, "center_y": .2}
+            # color:(.5,.5,.5,1)
+
+    FloatLayout:
+        size_hint: .43, .32 # set the size_hint to 50% width and 100% height
+        pos_hint: {"center_x": 0.22, "center_y": 0.33 + .172}
+        canvas.before:
+            Color:
+                rgba: (.5,.5,.5,.2)
+            RoundedRectangle:
+                pos: self.pos
+                size: self.size
+                radius:[4]
+
+        Label:
+            id: pace
+            text: "Pace"
+            font_size: 35
+            pos_hint: {"center_x": 0.5, "center_y": .5}
+            # color:(.5,.5,.5,1)
+
+        Label:
+            id: l_pace
+            text: "                          Speech Rate\nIdeal Speech rate shoud be 140 to 180 wpm"
+            font_size: 15
+            pos_hint: {"center_x": 0.5, "center_y": .2}
+            # color:(.5,.5,.5,1)
+
+    FloatLayout:
+        size_hint: .43, .32  # set the size_hint to 50% width and 100% height
+        pos_hint: {"center_x": 0.22, "center_y": 0.66 + .172}
+        canvas.before:
+            Color:
+                rgba: (.5,.5,.5,.2)
+            RoundedRectangle:
+                pos: self.pos
+                size: self.size
+                radius:[4]
+        
+        Label:
+            id: score
+            text: "Score"
+            font_size: 50
+            pos_hint: {"center_x": 0.5, "center_y": .7}
+            # color:(.5,.5,.5,1)
+
+        Label:
+            id: l_score
+            text: "             Overall Score\n Always speak loudly and clearly"
+            font_size: 15
+            pos_hint: {"center_x": 0.5, "center_y": .2}
+            # color:(.5,.5,.5,1)
+
+        # Button:
+        #     id: cam_btn
+        #     text: "See Results"
+        #     size_hint: .3, .3
+        #     background_color:.5,.5,.5,.5
+        #     pos_hint: {"center_x": 0.75, "center_y": .75}
+        #     on_press: root.jj()
+
+    ScrollView:
+        size_hint: .525, .75  # set the size_hint to 50% width and 100% height
+        # padding: 12
+        pos_hint: {"center_x": 0.715, "center_y": 0.615}
+        canvas.before:
+            Color:
+                rgba: (.5,.5,.5,.1)
+            RoundedRectangle:
+                pos: self.pos
+                size: self.size
+                radius:[4]
+
+        Label:
+            id: transcript
+            padding: dp(20), dp(10)
+            size_hint_y: None
+            # size_hint: .9,.8
+            markup:True
+            height: self.texture_size[1]
+            text_size: self.width, None
+            # pos_hint: {"center_x": 0.7, "center_y": .5}
+            # color:(.5,.5,.5,1)        
+
+# ================================================================================================================
+<DashScreen>
+    name:"dash_screen"
+
+    FloatLayout:
+        size_hint: .35, 1  # set the size_hint to 50% width and 100% height
+        pos_hint: {"center_x": 0.175, "center_y": 0.5}
+        canvas.before:
+            Color:
+                rgba: (1,1,1,.1)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Label:
+            id: recs
+            text: "Previous recordings"
+            font_size: 23
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {"center_x": 0.5, "center_y": 0.925}
+
+        FloatLayout:
+            id : history
+            size_hint: 1, .9
+            pos_hint: {"center_x": 0.5, "center_y": .4}            
+            canvas.before:
+                Color:
+                    rgba: (1,1,1,.1)
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            Button:
+                text: "Record Now"
+                size_hint: 1, .1
+                pos_hint: {"center_x": .498, "center_y": .95}
+                background_color: (0.8,0.8,0.8,.5)
+                on_press: root.record()
+                color : (1,1,1)
+
+    FloatLayout:
+        size_hint: .65, 1  # set the size_hint to 50% width and 20% height
+        pos_hint: {'center_x':.675, 'center_y':0.5}
+        # background_color: 1,0,0,1
+        canvas.before:
+            Color:
+                # rgba: (35/255.0, 35/255.0, 35/255.0, 1)
+                rgba: (0, 0, 0, 1)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Label: 
+            text: "Previous Performance"
+            font_size: 28
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {"center_x": 0.5, "center_y": 0.9}
+
+        BoxLayout:
+            id: box
+            size_hint: .85,.4
+            pos_hint: {"center_x": 0.5, "center_y": 0.65}
+
+        BoxLayout:
+            id: box1
+            size_hint: .85,.4
+            pos_hint: {"center_x": 0.5, "center_y": 0.25}
+
+
+# =================================================================================================================
+
+<RootWidget>:
+    LoginScreen:
+        name: "login_screen"
+    ResultScreen:
+        name: "result_screen"
+    RecScreen:
+        name: "rec_screen"
+    SignUpScreen:
+        name: "signup_screen"
+    DashScreen:
+        name: "dash_screen"
+
+    
